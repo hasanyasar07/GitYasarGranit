@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -61,22 +62,6 @@ public function productCreate(Request $request){
     $request->validate([
         'small_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Örnek: JPEG veya PNG, maksimum 2MB
     ]);
-
-    $image = $request->file('image');
-
-    // Resmi aç
-    $img = Image::make($image);
-
-    // Yeni boyutları ayarla
-
-
-    $img->crop(300, 200);
-    //$img->resize(300, 200);
-
-    // Yeniden boyutlandırılmış resmi farklı bir dosya adıyla kaydet
-    $newFileName = 'resized_image.jpg';
-    $img->save(storage_path ( $newFileName));
-
 
 
     if ($request->hasFile('big_photo') && $request->hasFile('small_photo')) {

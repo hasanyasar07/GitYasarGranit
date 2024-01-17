@@ -36,11 +36,13 @@
                                 </li>
                                 <li class="mb-3">
                                     <label for="fileInput">Büyük Resmi Seç "1200 X 800 piksel" </label>
-                                    <input type="file" name="big_photo" class="form-control">
+                                    <label for="fileInput" id="validation_big" style="color: red"> </label>
+                                    <input type="file" name="big_photo" class="form-control" id="big_photo">
                                 </li>
                                 <li class="mb-3">
                                     <label for="fileInput">Küçük Resmi Seç "450 X 300 piksel" </label>
-                                    <input type="file" name="small_photo" class="form-control">
+                                    <label for="fileInput" id="validation_small" style="color: red"> </label>
+                                    <input type="file" name="small_photo" class="form-control" id="small_photo">
                                 </li>
                                 <li class="mb-3">
                                     <button type="submit" class="btn btn-light">Ekle</button>
@@ -149,5 +151,62 @@
 </div>
 
 
+
+@endsection
+
+@section("js")
+<script>
+    document.getElementById('big_photo').addEventListener('change', function() {
+        var input = this;
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                var img = new Image();
+
+                img.onload = function() {
+                    if (img.width != 1200 && img.height != 800) {
+                        var validationLabelBig=document.getElementById('validation_big');
+                        validationLabelBig.innerHTML="Yanlış boyutlu resim girdiniz";
+                        input.value = '';
+                        setTimeout(function() {
+                        validationLabelBig.innerHTML = "";}, 2000);
+                    }
+                };
+
+                img.src = e.target.result;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    });
+
+    document.getElementById('small_photo').addEventListener('change', function() {
+        var input = this;
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                var img = new Image();
+
+                img.onload = function() {
+                    if (img.width != 450 && img.height != 300) {
+                        var validationLabelSmall=document.getElementById('validation_small');
+                        validationLabelSmall.innerHTML="Yanlış boyutlu resim girdiniz";
+                        input.value = '';
+                        setTimeout(function() {
+                        validationLabelSmall.innerHTML = "";}, 2000);
+                    }
+                };
+
+                img.src = e.target.result;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    });
+</script>
 
 @endsection
