@@ -76,7 +76,7 @@
 				<div class="sidebar-menu">
 					<div class="sidebarMenuScroll">
 						<ul>
-							<li class="sidebar-dropdown active">
+							<li class="sidebar-dropdown">
 								<a href="#">
 									<i class="bi bi-house"></i>
 									<span class="menu-text">Ana Sayfa</span>
@@ -106,7 +106,7 @@
 											<a href="{{route('categoryGet')}}">Kategoriler</a>
 										</li>
 										<li>
-											<a href="products.html">Ürünler</a>
+											<a href="{{route('productGet')}}">Ürünler</a>
 										</li>
 										<li>
 											<a href="view-cart.html">Tezgahlar</a>

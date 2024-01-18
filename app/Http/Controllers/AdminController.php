@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 
 
@@ -51,55 +52,67 @@ class AdminController extends Controller
 // ***************   product Field ********************
 
 public function productGet(){
-    $products=Product::get();
+    //category lerden silinmiş olanlar varsa onların product larını liste dışı bırak
+    $products = Product::whereHas('category')->with('category')->get();
     $categories=Category::get();
     return view('admin.product',compact('products','categories'));
 }
 public function productCreate(Request $request){
     $request->validate([
-        'big_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Örnek: JPEG veya PNG, maksimum 2MB
+        'big_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Example: JPEG or PNG, max 2MB
+        'small_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Example: JPEG or PNG, max 2MB
     ]);
-    $request->validate([
-        'small_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Örnek: JPEG veya PNG, maksimum 2MB
-    ]);
-
 
     if ($request->hasFile('big_photo') && $request->hasFile('small_photo')) {
         $big_photo = $request->file('big_photo');
-        $big=Image::make($big_photo);
-        $big->resize(1200,800);
-        $big_photoName = 'big'.time() . '.' . $big_photo->getClientOriginalExtension();
-        $big->save(storage_path($big_photoName));
-
+        $big_photoName = 'big' . time() . '.' . $big_photo->getClientOriginalExtension();
+        $big_photo->move(public_path('uploads'), $big_photoName);
 
         $small_photo = $request->file('small_photo');
-        $small=Image::make($small_photo);
-        $small->crop(450,300);
-        $small_photoName = 'small'.time() . '.' . $small_photo->getClientOriginalExtension();
-        $small->save(storage_path($small_photoName));
+        $small_photoName = 'small' . time() . '.' . $small_photo->getClientOriginalExtension();
+        $small_photo->move(public_path('uploads'), $small_photoName);
 
-        return "Resim başarıyla yüklendi ve kaydedildi!";
+        $product=new Product();
+        $product->category_id=$request->category_name;
+        $product->name=$request->name;
+        $product->big_photo_path=$big_photoName;
+        $product->small_photo_path=$small_photoName;
+        $product->save();
+        return redirect()->back();
     }
 
-    return "Resim yüklenirken bir hata oluştu.";
+    return "An error occurred while uploading images.";
 
 }
 
-public function productUpdate(Request $request){
-
-
-    return redirect()->back();
-}
 
 public function productDelete($id){
 
+    $product=Product::findOrFail($id);
+
+    $small_photoPath = public_path('uploads') . '/' . $product->small_photo_path;
+
+    if (File::exists($small_photoPath)) {
+        File::delete($small_photoPath);
+        // Silme işlemi başarılı olduysa burada başka bir şey yapabilirsiniz.
+    } else {
+        // Silme işlemi başarısız olduysa burada başka bir şey yapabilirsiniz.
+    }
+    $big_photoPath = public_path('uploads') . '/' . $product->big_photo_path;
+
+    if (File::exists($big_photoPath)) {
+        File::delete($big_photoPath);
+        // Silme işlemi başarılı olduysa burada başka bir şey yapabilirsiniz.
+    } else {
+        // Silme işlemi başarısız olduysa burada başka bir şey yapabilirsiniz.
+    }
+    $product->delete();
+
+
     return redirect()->back();
 }
 
-public function productRestore($id){
 
-    return redirect()->back();
-}
 
 
 

@@ -35,9 +35,7 @@ Route::controller(AdminController::class)->group(function(){
 
     Route::get('admin/product','productGet')->name('productGet');
     Route::post('admin/product/create','productCreate')->name('productCreate');
-    Route::post('admin/product/update','productUpdate')->name('productUpdate');
     Route::get('admin/product/delete/{id}','productDelete')->name('productDelete');
-    Route::get('admin/product/restore/{id}','productRestore')->name('productRestore');
 
 
     Route::get('test','test')->name('test');
