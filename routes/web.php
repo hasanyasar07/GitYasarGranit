@@ -37,6 +37,11 @@ Route::controller(AdminController::class)->group(function(){
     Route::post('admin/product/create','productCreate')->name('productCreate');
     Route::get('admin/product/delete/{id}','productDelete')->name('productDelete');
 
+    Route::get('admin/countertop','countertopGet')->name('countertopGet');
+    Route::post('admin/countertop/create','countertopCreate')->name('countertopCreate');
+    Route::get('admin/countertop/delete/{id}','countertopDelete')->name('countertopDelete');
+
+
 
     Route::get('test','test')->name('test');
 });

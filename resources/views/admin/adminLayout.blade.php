@@ -109,7 +109,7 @@
 											<a href="{{route('productGet')}}">Ürünler</a>
 										</li>
 										<li>
-											<a href="view-cart.html">Tezgahlar</a>
+											<a href="{{route('countertopGet')}}">Tezgahlar</a>
 										</li>
 									</ul>
 								</div>

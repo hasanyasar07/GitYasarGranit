@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Countertop;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -114,6 +115,54 @@ public function productDelete($id){
 
 
 
+// ***************   Countertop Field ********************
+
+public function countertopGet(){
+
+    $countertops=Countertop::whereHas('product')->with('product')->get();
+    $products=Product::get();
+
+    return view('admin.countertop',compact('countertops','products'));
+
+}
+
+
+public function countertopCreate(Request $request){
+    $request->validate([
+        'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Example: JPEG or PNG, max 2MB
+    ]);
+
+    if ($request->hasFile('photo')) {
+        $photo = $request->file('photo');
+        $photoName = 'cnt' . time() . '.' . $photo->getClientOriginalExtension();
+        $photo->move(public_path('uploads'), $photoName);
+        $countertop=new Countertop();
+        $countertop->product_id=$request->product_name;
+        $countertop->photo_path=$photoName;
+        $countertop->save();
+        return redirect()->back();
+
+    }
+}
+
+
+public function countertopDelete($id){
+
+    $countertop=Countertop::findOrFail($id);
+
+    $photoPath = public_path('uploads') . '/' . $countertop->photo_path;
+
+    if (File::exists($photoPath)) {
+        File::delete($photoPath);
+        // Silme işlemi başarılı olduysa burada başka bir şey yapabilirsiniz.
+    } else {
+        // Silme işlemi başarısız olduysa burada başka bir şey yapabilirsiniz.
+    }
+
+    $countertop->delete();
+
+    return redirect()->back();
+}
 
 
 
