@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Countertop;
+use App\Models\Slide;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -165,14 +166,54 @@ public function countertopDelete($id){
 }
 
 
+// ***************   Slide Field ********************
 
-// ***************   test Field ********************
-    public function test()
-    {
-        $category=Category::withTrashed()->get();
-        return view('admin.test',compact('category'));
+public function slideGet(){
+
+    $slides=Slide::get();
+
+    return view('admin.slide',compact('slides'));
+
+}
+
+
+public function slideCreate(Request $request){
+    $request->validate([
+        'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Example: JPEG or PNG, max 2MB
+    ]);
+
+    if ($request->hasFile('photo')) {
+        $photo = $request->file('photo');
+        $photoName = 'sld' . time() . '.' . $photo->getClientOriginalExtension();
+        $photo->move(public_path('uploads'), $photoName);
+        $slide=new Slide();
+        $slide->header=$request->header;
+        $slide->photo_path=$photoName;
+        $slide->save();
+        return redirect()->back();
 
     }
+}
+
+
+public function slideDelete($id){
+
+    $slide=Slide::findOrFail($id);
+
+    $photoPath = public_path('uploads') . '/' . $slide->photo_path;
+
+    if (File::exists($photoPath)) {
+        File::delete($photoPath);
+        // Silme işlemi başarılı olduysa burada başka bir şey yapabilirsiniz.
+    } else {
+        // Silme işlemi başarısız olduysa burada başka bir şey yapabilirsiniz.
+    }
+
+    $slide->delete();
+
+    return redirect()->back();
+}
+
 
 
 

@@ -41,7 +41,9 @@ Route::controller(AdminController::class)->group(function(){
     Route::post('admin/countertop/create','countertopCreate')->name('countertopCreate');
     Route::get('admin/countertop/delete/{id}','countertopDelete')->name('countertopDelete');
 
+    Route::get('admin/slide','slideGet')->name('slideGet');
+    Route::post('admin/slide/create','slideCreate')->name('slideCreate');
+    Route::get('admin/slide/delete/{id}','slideDelete')->name('slideDelete');
 
 
-    Route::get('test','test')->name('test');
 });

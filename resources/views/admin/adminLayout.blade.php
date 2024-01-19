@@ -84,7 +84,7 @@
 								<div class="sidebar-submenu">
 									<ul>
 										<li>
-											<a href="index.html" class="current-page">Slide</a>
+											<a href="{{route('slideGet')}}" class="current-page">Slide</a>
 										</li>
 										<li>
 											<a href="social.html">Popüler Ürünler</a>
@@ -155,7 +155,7 @@
 								<a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
 									<span class="user-name d-none d-md-block">Mehmet YAŞAR</span>
 									<span class="avatar">
-										<img src="{{asset('admin/images/user3.png')}}" alt="Admin Templates">
+										<img src="{{asset('admin/images/user4.png')}}" alt="Admin Templates">
 										<span class="status busy"></span>
 									</span>
 								</a>
