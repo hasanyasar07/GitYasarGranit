@@ -29,7 +29,7 @@ Favorite
                         <div class="name fs-5">{{$product->name}}</div>
                     </td>
                     <td>
-                        <a href="#">{{$product->small_photo_path}}</a>
+                        <img src="{{asset("uploads/$product->small_photo_path")}}" width="90" height="60">
                     </td>
                     <td>
                         <div class="form-check form-switch">
