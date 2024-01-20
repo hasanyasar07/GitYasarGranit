@@ -45,5 +45,7 @@ Route::controller(AdminController::class)->group(function(){
     Route::post('admin/slide/create','slideCreate')->name('slideCreate');
     Route::get('admin/slide/delete/{id}','slideDelete')->name('slideDelete');
 
+    Route::get('admin/favorite','favoriteGet')->name('favoriteGet');
+    Route::put('admin/favorite/update/{id}','favoriteUpdate')->name('favoriteUpdate');
 
 });

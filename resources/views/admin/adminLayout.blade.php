@@ -87,7 +87,7 @@
 											<a href="{{route('slideGet')}}" class="current-page">Slide</a>
 										</li>
 										<li>
-											<a href="social.html">Popüler Ürünler</a>
+											<a href="{{route('favoriteGet')}}">Popüler Ürünler</a>
 										</li>
                                         <li>
 											<a href="social.html">Referanslar</a>
@@ -220,6 +220,9 @@
 		<!-- Main Js Required -->
 		<script src="{{asset('admin/js/main.js')}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="{{ asset('js/script.js') }}"></script>
+
+
 
 
 	</body>

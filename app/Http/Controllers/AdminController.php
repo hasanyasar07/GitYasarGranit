@@ -10,6 +10,7 @@ use App\Models\Slide;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 
 
@@ -214,7 +215,21 @@ public function slideDelete($id){
     return redirect()->back();
 }
 
+// ***************   Favorite Field ********************
 
+public function favoriteGet(){
+    $products=Product::get();
+    return view('admin.favorite',compact('products'));
+}
+public function favoriteUpdate(Request $request, $id)
+{
+    $product = Product::find($id);
+    $product->is_favorite = $request->input('is_favorite');
+    $product->save();
+
+    return response()->json(['success' => true]);
+
+}
 
 
 }
