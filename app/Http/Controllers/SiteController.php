@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Slide;
 
 class SiteController extends Controller
 {
     public function home(){
+        $slides=Slide::get();
 
-        return view("home");
+        return view("home",compact('slides'));
     }
     public function category($id){
         $category=Category::findOrFail($id);

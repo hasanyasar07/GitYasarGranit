@@ -6,29 +6,17 @@
 @section('body')
 <section class="section swiper-container swiper-slider swiper-slider-minimal" data-loop="true" data-slide-effect="fade" data-autoplay="4759" data-simulate-touch="true">
     <div class="swiper-wrapper">
-      <div class="swiper-slide swiper-slide_video" data-slide-bg="images/slide1.jpg">
+     @foreach ($slides as $slide)
+     <div class="swiper-slide swiper-slide_video" data-slide-bg="{{asset("uploads/$slide->photo_path")}}">
         <div class="container">
           <div class="jumbotron-classic-content">
-            <h1 class="text-uppercase text-white font-weight-bold wow-outer"><span class="wow slideInDown" data-wow-delay=".2s">MÜŞTERİ MEMNUNİYETİ ÖNCELİĞİMİZDİR</span></h1>
+            <h1 class="text-uppercase text-white font-weight-bold wow-outer"><span class="wow slideInDown" data-wow-delay=".2s">{{$slide->header}}</span></h1>
             </div>
         </div>
       </div>
-      <div class="swiper-slide" data-slide-bg="images/slide2.jpg">
-        <div class="container">
-          <div class="jumbotron-classic-content">
-            <h1 class="text-uppercase text-white font-weight-bold wow-outer"><span class="wow slideInDown" data-wow-delay=".2s">TECRÜBE VE GÜVENİN ADRESİYİZ</span></h1>
-             </div>
-        </div>
-      </div>
-      <div class="swiper-slide" data-slide-bg="images/slide3.jpg">
-        <div class="container">
-          <div class="jumbotron-classic-content">
-            <div class="wow-outer">
-                <h1 class="text-uppercase text-white font-weight-bold wow-outer"><span class="wow slideInDown" data-wow-delay=".2s">1999'DAN BERİ HİZMETİNİZDEYİZ...</span></h1>
-            </div>
-          </div>
-        </div>
-      </div>
+
+     @endforeach
+
     </div>
     <div class="swiper-pagination-outer container">
       <div class="swiper-pagination swiper-pagination-modern swiper-pagination-marked" data-index-bullet="true"></div>

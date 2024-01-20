@@ -25,9 +25,15 @@
         @foreach ($products as $product)
         <div class="col-md-4 wow-outer">
             <!-- Post Modern-->
-            <article class="post-modern wow slideInLeft"><a class="post-modern-media" href={{asset("uploads/$product->big_photo_path")}} data-lightgallery="item"><img src={{asset("uploads/$product->small_photo_path")}} alt="" width="450" height="300"/></a>
-              <h5 class="post-modern-title"><a class="post-modern-title" href="#">{{$product->name}} </a> | <a class="button-winona" href="#">Örnek Tezgahlar</a></h5>
+            <article class="post-modern wow slideInLeft">
+                <a class="post-modern-media" href="{{asset("uploads/$product->big_photo_path")}}" data-lightgallery="item" data-sub-html="<p>{{$product->name}}</p>">
+                    <img src="{{asset("uploads/$product->small_photo_path")}}" alt="" width="450" height="300"/>
+                </a>
+                <h5 class="post-modern-title">
+                    <a class="post-modern-title" href="#">{{$product->name}}</a> | <a class="button-winona" href="#">Örnek Tezgahlar</a>
+                </h5>
             </article>
+
           </div>
         @endforeach
       </div>
