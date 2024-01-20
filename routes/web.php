@@ -16,7 +16,7 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/',[SiteController::class,'home'])->name('home');
-Route::get('categori',[SiteController::class,'categori'])->name('categori');
+Route::get('category/{id}',[SiteController::class,'category'])->name('category');
 Route::get('contact',[SiteController::class,'contact'])->name('contact');
 
 Route::get('index',function(){return View('admin.adminLayout');});

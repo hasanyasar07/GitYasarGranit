@@ -3,15 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Image;
+use App\Models\Category;
+use App\Models\Product;
 
 class SiteController extends Controller
 {
     public function home(){
+
         return view("home");
     }
-    public function categori(){
-        return view("cimstone");
+    public function category($id){
+        $category=Category::findOrFail($id);
+        $products=Product::where('category_id',$id)->get();
+        //dd($category,$products);
+        return view("category",compact('products','category'));
     }
     public function contact(){
         return view("contact");

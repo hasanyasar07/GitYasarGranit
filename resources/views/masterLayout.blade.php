@@ -1,3 +1,8 @@
+
+@php
+    use App\Models\Category;
+    $categoriesTitle=Category::get();
+@endphp
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
   <head>
@@ -19,7 +24,7 @@
   <body>
     <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <div class="preloader">
-      <div class="preloader-logo"><img src="images/yasarLogo.png" alt="" width="151" height="44" srcset="images/logo-default-151x44.png 2x"/>
+      <div class="preloader-logo"><img src="{{ asset('images/yasarLogo.png') }}" alt="" width="151" height="44" srcset="images/logo-default-151x44.png 2x"/>
       </div>
       <div class="preloader-body">
         <div id="loadingProgressG">
@@ -39,7 +44,7 @@
                 <div class="rd-navbar-panel">
                   <!-- RD Navbar Toggle-->
                   <button class="rd-navbar-toggle" data-rd-navbar-toggle="#rd-navbar-nav-wrap-1"><span></span></button>
-                  <!-- RD Navbar Brand--><a class="rd-navbar-brand" href="index.html"><img class="img-banner" src="images/yasarLogo.png" alt="" width="250" height="60" srcset="images/yasarLogo.png 2x"/></a>
+                  <!-- RD Navbar Brand--><a class="rd-navbar-brand" href="index.html"><img class="img-banner" src="{{ asset('images/yasarLogo.png') }}" alt="" width="250" height="60" srcset="images/yasarLogo.png 2x"/></a>
                 </div>
                 <div class="rd-navbar-collapse">
                   <button class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle="#rd-navbar-collapse-content-1"><span></span></button>
@@ -72,11 +77,10 @@
                   <ul class="rd-navbar-nav">
                     <li class="rd-nav-item"><a class="rd-nav-link" href="{{route('home')}}">Ana Sayfa</a>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="{{route('categori')}}">ÇİMSTONE</a>
+                    @foreach ($categoriesTitle as $categoryTitle)
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="{{route('category',$categoryTitle->id)}}">{{$categoryTitle->name}}</a>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="typography.html">GRANİT</a>
-                    </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="typography.html">MERMERİT</a>
+                    @endforeach
                     </li>
                     <li class="rd-nav-item"><a class="rd-nav-link" href="about-us.html">HAKKIMIZDA</a>
                     </li>
@@ -117,7 +121,7 @@
     <div class="snackbars" id="form-output-global"></div>
     <!-- Javascript-->
     @yield('js')
-    <script src="js/core.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src={{asset("js/core.min.js")}}></script>
+    <script src={{asset("js/script.js")}}></script>
   </body>
 </html>
