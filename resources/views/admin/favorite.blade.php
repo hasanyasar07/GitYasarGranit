@@ -32,8 +32,9 @@ Favorite
                         <a href="#">{{$product->small_photo_path}}</a>
                     </td>
                     <td>
-                        <input  type="checkbox" class="favorite-switch" data-product-id="{{ $product->id }}" {{ $product->is_favorite ? 'checked' : '' }}>
-
+                        <div class="form-check form-switch">
+                        <input  type="checkbox" role="switch" class="favorite-switch form-check-input" data-product-id="{{ $product->id }}" {{ $product->is_favorite ? 'checked' : '' }}>
+                        </div>
                     </td>
                 </tbody>
 
