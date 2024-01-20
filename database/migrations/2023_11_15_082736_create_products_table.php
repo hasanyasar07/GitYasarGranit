@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->integer("category_id");
+            $table->boolean('is_favorite')->default(false);
             $table->string("name");
             $table->string("big_photo_path");
             $table->string("small_photo_path");

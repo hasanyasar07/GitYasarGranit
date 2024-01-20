@@ -9,6 +9,18 @@
     <div class="container_koleksiyon " data-lightgallery="group">
       <h3 class="text-uppercase  wow-outer"><span class="wow slideInDown">{{$category->name;}} KOLEKSİYONU</span></h3>
       <hr>
+      @if ($products->isEmpty())
+      <div style="text-align: center;">
+        <br>
+        <br>
+        <br>
+          <h4>Bu Kategoride Henüz Ürünümüz Bulunmamaktadır.<br>
+          Yakında Yeni Ürünlerimizi Sizlerle Buluşturacağız...</h4>
+          <br>
+        <br>
+        <br>
+      </div>
+  @endif
       <div class="row row-lg-50 row-35 offset-top-2">
         @foreach ($products as $product)
         <div class="col-md-4 wow-outer">
