@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Slide;
+use App\Models\About;
+use App\Models\Countertop;
 use App\Models\Collection;
 use App\Models\Referance;
 
@@ -14,7 +16,7 @@ class SiteController extends Controller
     public function home(){
         $slides=Slide::get();
         $favorites=Product::where('is_favorite',true)->get();
-        $collections=Collection::with('category')->get();
+        $collections=Collection::whereHas('category')->with('category')->get();
         $referances=Referance::get();
 
         return view("home",compact('slides','favorites','collections','referances'));
@@ -22,56 +24,56 @@ class SiteController extends Controller
     public function category($id){
         $category=Category::findOrFail($id);
         $products=Product::where('category_id',$id)->get();
-        //dd($category,$products);
         return view("category",compact('products','category'));
     }
+
+    public function countertop($id){
+        $product=Product::findOrFail($id);
+        try {
+            $countertops=Countertop::where('product_id',$id)->get();
+            return view("countertop",compact('product','countertops'));
+        } catch (\Throwable $th) {
+            $countertops=new Countertop();
+            return view("countertop",compact('product','countertops'));
+        }
+
+
+    }
+
     public function contact(){
         return view("contact");
     }
 
 
-public function resizeAndSaveImage(Request $request)
-{
-    $image = $request->file('image');
 
-    // Resmi aç
-    $img = Image::make($image);
+    public function about(){
+        if(About::get()){
+            $about=About::findOrFail(1);
+            return view('about',compact('about'));
+        }else{
+            $about=new About();
+        return view('about',compact('about'));
 
-    // Yeni boyutları ayarla
-
-
-    $img->crop(300, 200);
-    //$img->resize(300, 200);
-
-    // Yeniden boyutlandırılmış resmi farklı bir dosya adıyla kaydet
-    $newFileName = 'resized_image.jpg';
-    $img->save(storage_path ( $newFileName));
-
-    return 'Resim başarıyla boyutlandırıldı ve kaydedildi!';
-}
-
-public function showForm()
-{
-    return view('admin.imageResize');
-}
-
-public function upload(Request $request)
-{
-
-    $request->validate([
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Örnek: JPEG veya PNG, maksimum 2MB
-    ]);
-
-
-    if ($request->hasFile('image')) {
-        $image = $request->file('image');
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('uploads'), $imageName);
-
-        return "Resim başarıyla yüklendi ve kaydedildi!";
+        }
     }
 
-    return "Resim yüklenirken bir hata oluştu.";
-}
+    public function showLoginForm()
+    {
+        return view('login');
+    }
+
+    public function login(Request $request)
+    {
+        // Giriş doğrulama işlemleri burada yapılacaktır.
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Başarılı giriş
+            return redirect()->intended('/admin/dashboard');
+        }
+
+        // Başarısız giriş
+        return redirect()->back()->withInput($request->only('email', 'remember'))->withErrors(['email' => 'Giriş bilgileri hatalı']);
+    }
 
 }

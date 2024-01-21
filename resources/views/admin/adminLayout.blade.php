@@ -76,7 +76,7 @@
 				<div class="sidebar-menu">
 					<div class="sidebarMenuScroll">
 						<ul>
-							<li class="sidebar-dropdown">
+							<li class="sidebar-dropdown active">
 								<a href="#">
 									<i class="bi bi-house"></i>
 									<span class="menu-text">Ana Sayfa</span>
@@ -84,7 +84,7 @@
 								<div class="sidebar-submenu">
 									<ul>
 										<li>
-											<a href="{{route('slideGet')}}" class="current-page">Slide</a>
+											<a href="{{route('slideGet')}}">Slide</a>
 										</li>
 										<li>
 											<a href="{{route('favoriteGet')}}">Popüler Ürünler</a>
@@ -95,10 +95,13 @@
                                         <li>
 											<a href="{{route('referanceGet')}}">Referanslar</a>
 										</li>
+                                        <li>
+											<a href="{{route('aboutGet')}}">Hakkımızda</a>
+										</li>
 									</ul>
 								</div>
 							</li>
-							<li class="sidebar-dropdown">
+							<li class="sidebar-dropdown active">
 								<a href="#">
 									<i class="bi bi-handbag"></i>
 									<span class="menu-text">Ürün Düzenleme</span>
@@ -117,12 +120,7 @@
 									</ul>
 								</div>
 							</li>
-							<li>
-								<a href="starter-page.html">
-									<i class="bi bi-hand-index-thumb"></i>
-									<span class="menu-text">Adres</span>
-								</a>
-							</li>
+
 						</ul>
 					</div>
 				</div>

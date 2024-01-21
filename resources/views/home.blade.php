@@ -35,7 +35,7 @@
                     <img src="{{asset("uploads/$product->small_photo_path")}}" alt="" width="450" height="300"/>
                 </a>
                 <h5 class="post-modern-title">
-                    <a class="post-modern-title" href="#">{{$product->name}}</a> | <a class="button-winona" href="#">Örnek Tezgahlar</a>
+                    <a class="post-modern-title" href="{{route('countertop',$product->id)}}">{{$product->name}}</a> | <a class="button-winona" href="{{route('countertop',$product->id)}}">Örnek Tezgahlar</a>
                 </h5>
             </article>
 

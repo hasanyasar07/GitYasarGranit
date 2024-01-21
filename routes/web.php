@@ -4,27 +4,20 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\AdminController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
 
 Route::get('/',[SiteController::class,'home'])->name('home');
 Route::get('category/{id}',[SiteController::class,'category'])->name('category');
 Route::get('contact',[SiteController::class,'contact'])->name('contact');
+Route::get('about',[SiteController::class,'about'])->name('about');
+Route::get('countertop/{id}',[SiteController::class,'countertop'])->name('countertop');
 
-Route::get('index',function(){return View('admin.adminLayout');});
+Route::get('login', [SiteController::class, 'showLoginForm'])->name('admin.login');
+Route::post('login', [SiteController::class, 'login'])->name('admin.login.submit');
 
 
 
-Route::get('/upload',[SiteController::class,'showForm'])->name('upload.form');
-Route::post('/upload',[SiteController::class,'upload'])->name('upload');
+
 
 Route::controller(AdminController::class)->group(function(){
     Route::get('admin/category','categoryGet')->name('categoryGet');
@@ -55,5 +48,8 @@ Route::controller(AdminController::class)->group(function(){
     Route::get('admin/referance','referanceGet')->name('referanceGet');
     Route::post('admin/referance/create','referanceCreate')->name('referanceCreate');
     Route::get('admin/referance/delete/{id}','referanceDelete')->name('referanceDelete');
+
+    Route::get('admin/about','aboutGet')->name('aboutGet');
+    Route::post('admin/about/update','aboutUpdate')->name('aboutUpdate');
 
 });

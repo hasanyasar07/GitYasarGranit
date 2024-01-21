@@ -25,7 +25,20 @@
     <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <div class="preloader">
       <div class="preloader-logo"><img src="{{ asset('images/yasarLogo.png') }}" alt="" width="302" height="88" srcset="images/logo-default-151x44.png 2x"/>
-      </div>
+    @php
+
+        $categoryPreloder=Category::get();
+        $list=$categoryPreloder->pluck('name')->all();
+
+    @endphp
+      <div class="text-center">
+        <h4>
+            @foreach($list as $categoryName)
+                {{ $categoryName }}
+            @endforeach
+        </h4>
+    </div>
+    </div>
       <div class="preloader-body">
         <div id="loadingProgressG">
           <div class="loadingProgressG" id="loadingProgressG_1"></div>
@@ -82,7 +95,7 @@
                     </li>
                     @endforeach
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="about-us.html">HAKKIMIZDA</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="{{route('about')}}">HAKKIMIZDA</a>
                     </li>
                     <li class="rd-nav-item"><a class="rd-nav-link" href="{{route('contact')}}">İLETİŞİM</a>
                     </li>

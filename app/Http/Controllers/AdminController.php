@@ -9,6 +9,7 @@ use App\Models\Countertop;
 use App\Models\Slide;
 use App\Models\Collection;
 use App\Models\Referance;
+use App\Models\About;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -306,6 +307,30 @@ public function referanceCreate(Request $request){
 public function referanceDelete($id){
     $referance=Referance::findOrfail($id);
     $referance->delete();
+    return redirect()->back();
+}
+
+public function aboutGet(){
+    try {
+        $about=About::findOrFail(1);
+    } catch (\Throwable $th) {
+        $about=new About();
+    }
+    return view('admin.about',compact('about'));
+}
+public function aboutUpdate(Request $request){
+
+    if(About::get()){
+        $about=About::findOrFail(1);
+        $about->content=$request->content;
+        $about->save();
+    }else{
+
+        $about=new About();
+        $about->content=$request->content;
+        $about->save();
+
+    }
     return redirect()->back();
 }
 
