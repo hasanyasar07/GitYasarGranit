@@ -1,6 +1,6 @@
 @extends('admin.adminLayout')
 @section('adminHeader')
-Slide
+Koleksiyon
 @endsection
 
 
@@ -12,7 +12,7 @@ Slide
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <form action="{{ route('slideCreate') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('collectionCreate') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-sm-12 col-12 d-flex justify-content-end mb-3">
@@ -23,11 +23,15 @@ Slide
                         <div class="col-sm-12 col-12">
                             <ul class="list-unstyled">
                                 <li class="mb-3">
-                                    <label for="name" class="form-label">Resim Yazısı</label>
-                                    <input type="text" name="header" class="form-control" placeholder="Enter Slide Header" required>
+                                    <label for="product_name" class="form-label">Kategori</label>
+                                    <select name="category_name" class="form-select" required>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </li>
                                 <li class="mb-3">
-                                    <label for="photo" class="form-label">Resim (1920 X 968 pixels)</label>
+                                    <label for="photo" class="form-label">Resim (450 X 300 pixels)</label>
                                     <input type="file" name="photo" class="form-control" id="photo" required>
                                     <small id="validation" class="form-text text-danger"></small>
                                 </li>
@@ -52,22 +56,26 @@ Slide
         <table class="table table-hover text-center">
             <thead>
                 <tr>
-                    <td>Resim Yazısı</td>
+                    <td>Resim Id</td>
+                    <td>Kategori</td>
                     <td>Fotoğraf</td>
                     <td>İşlemler</td>
                 </tr>
             </thead>
-            @foreach ($slides as $slide)
+            @foreach ($collections as $collection)
             <tbody>
                 <tr>
                     <td>
-                        <div class="name fs-5">{{$slide->header}}</div>
+                        <div class="name fs-5">{{$collection->id}}</div>
                     </td>
                     <td>
-                        <img src="{{asset("uploads/$slide->photo_path")}}" width="90" height="60">
+                        <div class="name fs-5">{{$collection->category->name}}</div>
                     </td>
                     <td>
-                        <a href="{{route('slideDelete',$slide->id)}}" class="btn btn-danger" >Sil</a>
+                        <img src="{{asset("uploads/$collection->photo_path")}}" width="90" height="60">
+                    </td>
+                    <td>
+                        <a href="{{route('collectionDelete',$collection->id)}}" class="btn btn-danger" >Sil</a>
                     </td>
                 </tbody>
 
@@ -76,8 +84,6 @@ Slide
         </table>
     </div>
 </div>
-
-
 
 @endsection
 
@@ -93,7 +99,7 @@ Slide
                 var img = new Image();
 
                 img.onload = function() {
-                    if (img.width != 1920 && img.height != 968) {
+                    if (img.width != 450 && img.height != 300) {
                         var validationLabelBig=document.getElementById('validation');
                         validationLabelBig.innerHTML="Yanlış boyutlu resim girdiniz";
                         input.value = '';

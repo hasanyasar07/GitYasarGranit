@@ -27,72 +27,20 @@
       <h3 class="text-uppercase  wow-outer"><span class="wow slideInDown">Popüler Ürünler</span></h3>
       <hr>
       <div class="row row-lg-50 row-35 offset-top-2">
-        <div class="col-md-6 wow-outer">
-          <!-- Post Modern-->
-          <article class="post-modern wow slideInLeft"><a class="post-modern-media" href="#"><img src="images/Populer1.jpg" alt="" width="571" height="353"/></a>
-            <h4 class="post-modern-title"><a class="post-modern-title" href="#">Çimstone - Amanos </a></h4>
-            <ul class="post-modern-meta">
-                <li><a class="button-winona" href="#">Ürün Detayları</a></li>
-                <li>Amanos Kod:160</li>
-                <li><a class="button-winona" href="#">Örnek Tezgahlar</a></li>
-            </ul>
-          </article>
-        </div>
-        <div class="col-md-6 wow-outer">
-          <!-- Post Modern-->
-          <article class="post-modern wow slideInLeft"><a class="post-modern-media" href="#"><img src="images/Populer2.jpg" alt="" width="571" height="353"/></a>
-            <h4 class="post-modern-title"><a class="post-modern-title" href="#">Çimstone - Milos</a></h4>
-            <ul class="post-modern-meta">
-                <li><a class="button-winona" href="#">Ürün Detayları</a></li>
-                <li>Milos Kod:290</li>
-                <li><a class="button-winona" href="#">Örnek Tezgahlar</a></li>
-            </ul>
-          </article>
-        </div>
-        <div class="col-md-6 wow-outer">
-          <!-- Post Modern-->
-          <article class="post-modern wow slideInLeft"><a class="post-modern-media" href="#"><img src="images/Populer3.jpg" alt="" width="571" height="353"/></a>
-            <h4 class="post-modern-title"><a class="post-modern-title" href="#">Granit - Aksaray Yaylak</a></h4>
-            <ul class="post-modern-meta">
-                <li><a class="button-winona" href="#">Ürün Detayları</a></li>
-                <li>Menşei: Yerli - (Türkiye - Aksaray)</li>
-                <li><a class="button-winona" href="#">Örnek Tezgahlar</a></li>
-            </ul>
-          </article>
-        </div>
-        <div class="col-md-6 wow-outer">
-          <!-- Post Modern-->
-          <article class="post-modern wow slideInLeft"><a class="post-modern-media" href="#"><img src="images/Populer4.jpg" alt="" width="571" height="353"/></a>
-            <h4 class="post-modern-title"><a class="post-modern-title" href="#">Granit - Azul Platino</a></h4>
-            <ul class="post-modern-meta">
-                <li><a class="button-winona" href="#">Ürün Detayları</a></li>
-                <li>Menşei: İthal - İspanya</li>
-                <li><a class="button-winona" href="#">Örnek Tezgahlar</a></li>
-            </ul>
-          </article>
-        </div>
-        <div class="col-md-6 wow-outer">
+        @foreach ($favorites as $product)
+        <div class="col-md-4 wow-outer">
             <!-- Post Modern-->
-            <article class="post-modern wow slideInLeft"><a class="post-modern-media" href="#"><img src="images/Populer5.jpg" alt="" width="571" height="353"/></a>
-              <h4 class="post-modern-title"><a class="post-modern-title" href="#">Mermerit - Grapol</a></h4>
-              <ul class="post-modern-meta">
-                <li><a class="button-winona" href="#">Ürün Detayları</a></li>
-                <li>Mermerit Kod:110</li>
-                <li><a class="button-winona" href="#">Örnek Tezgahlar</a></li>
-            </ul>
+            <article class="post-modern wow slideInLeft">
+                <a class="post-modern-media" href="{{asset("uploads/$product->big_photo_path")}}" data-lightgallery="item" data-sub-html="<p>{{$product->name}}</p>">
+                    <img src="{{asset("uploads/$product->small_photo_path")}}" alt="" width="450" height="300"/>
+                </a>
+                <h5 class="post-modern-title">
+                    <a class="post-modern-title" href="#">{{$product->name}}</a> | <a class="button-winona" href="#">Örnek Tezgahlar</a>
+                </h5>
             </article>
+
           </div>
-          <div class="col-md-6 wow-outer">
-            <!-- Post Modern-->
-            <article class="post-modern wow slideInLeft"><a class="post-modern-media" href="#"><img src="images/Populer6.jpg" alt="" width="571" height="353"/></a>
-              <h4 class="post-modern-title"><a class="post-modern-title" href="#">Mermerit - Grapol</a></h4>
-              <ul class="post-modern-meta">
-                <li><a class="button-winona" href="#">Ürün Detayları</a></li>
-                <li>Mermerit Kod:160</li>
-                <li><a class="button-winona" href="#">Örnek Tezgahlar</a></li>
-            </ul>
-            </article>
-          </div>
+        @endforeach
       </div>
     </div>
   </section>
@@ -100,28 +48,23 @@
   <section class="section novi-background section-lg text-center padding">
     <div class="container">
       <h3 class="text-uppercase  wow-outer"><span class="wow slideInDown">KOLEKSİYONLAR</span></h3>
-      <p><span class="text-width-1">Çimston, Granit ve Mermerit Koleksiyonları Detaylarında Farklı Renk Seçeneklerini ve Bu Renklere Ait Hazırlanmış Örnek Tezgahları Bulabilirsiniz...</span></p>
+      <p><span class="text-width-1">Koleksiyonların Detaylarında Farklı Renk Seçeneklerini ve Bu Renklere Ait Hazırlanmış Örnek Tezgahları Bulabilirsiniz...</span></p>
       <hr>
-      <div class="row row-35 row-xxl-70 offset-top-2">
-        <div class="col-sm-12 col-lg-4">
-          <!-- Thumbnail Light-->
-          <article class="thumbnail-light"><a class="thumbnail-light-media" href="#"><img class="thumbnail-light-image" src="images/CimstoneKatalog.jpg" alt="" width="270" height="300"/></a>
-            <h4 class="thumbnail-light-title"><a href="#">Çimstone Koleksiyon</a></h4>
-          </article>
-        </div>
-        <div class="col-sm-12 col-lg-4">
-            <!-- Thumbnail Light-->
-            <article class="thumbnail-light"><a class="thumbnail-light-media" href="#"><img class="thumbnail-light-image" src="images/GranitKatalog.jpg" alt="" width="270" height="300"/></a>
-              <h4 class="thumbnail-light-title"><a href="#">Granit Koleksiyon</a></h4>
+      <div class="row row-lg-50 row-35 offset-top-2">
+        @foreach ($collections as $collection)
+        <div class="col-md-4 wow-outer">
+            <!-- Post Modern-->
+            <article class="post-modern wow slideInLeft">
+                <a class="post-modern-media" href="{{route('category',$collection->category_id)}}">
+                    <img src="{{asset("uploads/$collection->photo_path")}}" alt="" width="450" height="300"/>
+                </a>
+                <h4 class="thumbnail-light-title"><a href="{{route('category',$collection->category_id)}}">{{$collection->category->name}} Koleksiyon</a></h4>
             </article>
+
           </div>
-        <div class="col-sm-12 col-lg-4">
-          <!-- Thumbnail Light-->
-          <article class="thumbnail-light"><a class="thumbnail-light-media" href="#"><img class="thumbnail-light-image" src="images/MermeritKatalog.jpg" alt="" width="270" height="300"/></a>
-            <h4 class="thumbnail-light-title"><a href="#">Mermerit Koleksiyon</a></h4>
-          </article>
-        </div>
+        @endforeach
       </div>
+
     </div>
   </section>
 

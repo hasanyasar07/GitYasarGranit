@@ -18,4 +18,6 @@ class Product extends Model
         return $this->hasMany(countertops::class);
     }
 
+
+
 }

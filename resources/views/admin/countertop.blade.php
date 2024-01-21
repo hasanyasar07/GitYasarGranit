@@ -72,7 +72,7 @@
                         <div class="name fs-5">{{$countertop->product->name}}</div>
                     </td>
                     <td>
-                        <a href="#">{{$countertop->photo_path}}</a>
+                        <img src="{{asset("uploads/$countertop->photo_path")}}" width="90" height="60">
                     </td>
                     <td>
                         <a href="{{route('countertopDelete',$countertop->id)}}" class="btn btn-danger" >Sil</a>
@@ -84,8 +84,6 @@
         </table>
     </div>
 </div>
-
-
 
 @endsection
 

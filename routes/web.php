@@ -48,4 +48,8 @@ Route::controller(AdminController::class)->group(function(){
     Route::get('admin/favorite','favoriteGet')->name('favoriteGet');
     Route::put('admin/favorite/update/{id}','favoriteUpdate')->name('favoriteUpdate');
 
+    Route::get('admin/collection','collectionGet')->name('collectionGet');
+    Route::post('admin/collection/create','collectionCreate')->name('collectionCreate');
+    Route::get('admin/collection/delete/{id}','collectionDelete')->name('collectionDelete');
+
 });

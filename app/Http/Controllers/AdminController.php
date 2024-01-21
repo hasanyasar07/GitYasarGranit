@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Countertop;
 use App\Models\Slide;
+use App\Models\Collection;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -230,6 +231,64 @@ public function favoriteUpdate(Request $request, $id)
     return response()->json(['success' => true]);
 
 }
+
+
+// ***************   Countertop Field ********************
+
+public function collectionGet(){
+
+    $collections = Collection::with('category')->get();
+
+    // İlişkili kategori ID'lerini içeren bir dizi
+    $excludedCategoryIds = $collections->pluck('category_id')->toArray();
+
+    // İlişkili olmayan kategorileri al
+    $categories = Category::whereNotIn('id', $excludedCategoryIds)->get();
+
+
+    return view('admin.collection',compact('collections','categories'));
+
+}
+
+
+public function collectionCreate(Request $request){
+    $request->validate([
+        'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Example: JPEG or PNG, max 2MB
+    ]);
+
+    if ($request->hasFile('photo')) {
+        $photo = $request->file('photo');
+        $photoName = 'col' . time() . '.' . $photo->getClientOriginalExtension();
+        $photo->move(public_path('uploads'), $photoName);
+        $collection=new Collection();
+        $collection->category_id=$request->category_name;
+        $collection->photo_path=$photoName;
+        $collection->save();
+        return redirect()->back();
+
+    }
+}
+
+
+public function collectionDelete($id){
+
+    $collection=Collection::findOrFail($id);
+
+    $photoPath = public_path('uploads') . '/' . $collection->photo_path;
+
+    if (File::exists($photoPath)) {
+        File::delete($photoPath);
+        // Silme işlemi başarılı olduysa burada başka bir şey yapabilirsiniz.
+    } else {
+        // Silme işlemi başarısız olduysa burada başka bir şey yapabilirsiniz.
+    }
+
+    $collection->delete();
+
+    return redirect()->back();
+}
+
+
 
 
 }

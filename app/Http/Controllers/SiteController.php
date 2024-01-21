@@ -6,13 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Slide;
+use App\Models\Collection;
 
 class SiteController extends Controller
 {
     public function home(){
         $slides=Slide::get();
+        $favorites=Product::where('is_favorite',true)->get();
+        $collections=Collection::with('category')->get();
 
-        return view("home",compact('slides'));
+        return view("home",compact('slides','favorites','collections'));
     }
     public function category($id){
         $category=Category::findOrFail($id);

@@ -90,6 +90,9 @@
 											<a href="{{route('favoriteGet')}}">Popüler Ürünler</a>
 										</li>
                                         <li>
+											<a href="{{route('collectionGet')}}">Koleksiyonlar</a>
+										</li>
+                                        <li>
 											<a href="social.html">Referanslar</a>
 										</li>
 									</ul>
