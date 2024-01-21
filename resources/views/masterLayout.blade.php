@@ -24,7 +24,7 @@
   <body>
     <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <div class="preloader">
-      <div class="preloader-logo"><img src="{{ asset('images/yasarLogo.png') }}" alt="" width="151" height="44" srcset="images/logo-default-151x44.png 2x"/>
+      <div class="preloader-logo"><img src="{{ asset('images/yasarLogo.png') }}" alt="" width="302" height="88" srcset="images/logo-default-151x44.png 2x"/>
       </div>
       <div class="preloader-body">
         <div id="loadingProgressG">
@@ -111,7 +111,7 @@
                     <li><a class="icon novi-icon icon-sm link-default mdi mdi-linkedin" href="#"></a></li>
                   </ul>
                 <!-- Rights-->
-              <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span>. All Rights Reserved. Design by <a href="mailto:hasanyasar07@hotmail.com">hasanyasar07@hotmail.com</a></p>
+              <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span>. All Rights Reserved. Web Development by <a href="mailto:hasanyasar07@hotmail.com">hasanyasar07@hotmail.com</a></p>
             </div>
           </div>
         </div>

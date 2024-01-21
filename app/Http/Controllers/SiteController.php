@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Slide;
 use App\Models\Collection;
+use App\Models\Referance;
 
 class SiteController extends Controller
 {
@@ -14,8 +15,9 @@ class SiteController extends Controller
         $slides=Slide::get();
         $favorites=Product::where('is_favorite',true)->get();
         $collections=Collection::with('category')->get();
+        $referances=Referance::get();
 
-        return view("home",compact('slides','favorites','collections'));
+        return view("home",compact('slides','favorites','collections','referances'));
     }
     public function category($id){
         $category=Category::findOrFail($id);

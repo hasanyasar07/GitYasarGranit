@@ -72,86 +72,22 @@
   <section class="section novi-background section-lg text-center">
     <div class="container">
       <h3 class="wow-outer"><span class="wow slideInDown text-uppercase">REFERANSLAR</span></h3>
+      <hr>
       <!-- Owl Carousel-->
+
       <div class="owl-carousel wow fadeIn" data-items="1" data-md-items="2" data-lg-items="3" data-dots="true" data-nav="false" data-loop="true" data-autoplay="true" data-autoplay-speed="731" data-autoplay-timeout="4268" data-margin="30" data-stage-padding="0" data-mouse-drag="false">
+        @foreach ($referances as $referance)
         <blockquote class="quote-classic">
-          <div class="quote-classic-meta">
-            <div class="quote-classic-avatar"><img src="images/testimonials-person-6-96x96.jpg" alt="" width="96" height="96"/>
+            <div class="quote-classic-meta">
+              <div class="quote-classic-avatar"><img src="uploads/tic.png" alt="" />
+              </div>
+              <div class="quote-classic-info">
+                <cite class="quote-classic-cite">{{$referance->company}}</cite>
+                <p class="quote-classic-caption">{{$referance->name}}</p>
+              </div>
             </div>
-            <div class="quote-classic-info">
-              <cite class="quote-classic-cite">The Color Otel</cite>
-              <p class="quote-classic-caption">Genel Müdür Ahmet Konuk</p>
-            </div>
-          </div>
-          <div class="quote-classic-text">
-            <p>I have just bought an apartment in LA thanks to you and your brokers. Everything went smooth and easy, the price was quite affordable, and I’m sure I will use your services again in the future.</p>
-          </div>
-        </blockquote>
-        <blockquote class="quote-classic">
-          <div class="quote-classic-meta">
-            <div class="quote-classic-avatar"><img src="images/testimonials-person-1-96x96.jpg" alt="" width="96" height="96"/>
-            </div>
-            <div class="quote-classic-info">
-              <cite class="quote-classic-cite">Sun Bella Seher Otel</cite>
-              <p class="quote-classic-caption">Genel Müdür Mehmet Kalkan</p>
-            </div>
-          </div>
-          <div class="quote-classic-text">
-            <p>I have recently sold my rental property in Nelson via inHouse. Everything about the sale was made seamless by your team. You gave me great advice about what was necessary to expedite the sale.</p>
-          </div>
-        </blockquote>
-        <blockquote class="quote-classic">
-          <div class="quote-classic-meta">
-            <div class="quote-classic-avatar"><img src="images/testimonials-person-2-96x96.jpg" alt="" width="96" height="96"/>
-            </div>
-            <div class="quote-classic-info">
-              <cite class="quote-classic-cite">Ünal İnşaat</cite>
-              <p class="quote-classic-caption">Akif Ünal</p>
-            </div>
-          </div>
-          <div class="quote-classic-text">
-            <p>I really appreciate your time and expertise in helping me find and buy my current home in Seattle, WA. Hope we can do business again in the future and I will recommend you to family and friends.</p>
-          </div>
-        </blockquote>
-        <blockquote class="quote-classic">
-          <div class="quote-classic-meta">
-            <div class="quote-classic-avatar"><img src="images/testimonials-person-3-96x96.jpg" alt="" width="96" height="96"/>
-            </div>
-            <div class="quote-classic-info">
-              <cite class="quote-classic-cite">Bill Warner</cite>
-              <p class="quote-classic-caption">Regular Client</p>
-            </div>
-          </div>
-          <div class="quote-classic-text">
-            <p>I have just sold a property with inHouse and I can’t thank them enough. Their team has great communication skills and they have regularly communicated with me throughout the whole process.</p>
-          </div>
-        </blockquote>
-        <blockquote class="quote-classic">
-          <div class="quote-classic-meta">
-            <div class="quote-classic-avatar"><img src="images/testimonials-person-4-96x96.jpg" alt="" width="96" height="96"/>
-            </div>
-            <div class="quote-classic-info">
-              <cite class="quote-classic-cite">Cambazoğlu Kuaför</cite>
-              <p class="quote-classic-caption">Salih Cambazoğlu</p>
-            </div>
-          </div>
-          <div class="quote-classic-text">
-            <p>Your skilled team helped me make the dream of selling my old property a reality. The sale went smoothly, and I just closed on an ideal new place I am excited to call home. Thank you for your great services!</p>
-          </div>
-        </blockquote>
-        <blockquote class="quote-classic">
-          <div class="quote-classic-meta">
-            <div class="quote-classic-avatar"><img src="images/testimonials-person-5-96x96.jpg" alt="" width="96" height="96"/>
-            </div>
-            <div class="quote-classic-info">
-              <cite class="quote-classic-cite">Acar Bot</cite>
-              <p class="quote-classic-caption">Mehmet Fatih Acar</p>
-            </div>
-          </div>
-          <div class="quote-classic-text">
-            <p>I have to say that inHouse has the best brokers we've ever worked with. Their professionalism, personality, attention to detail, responsiveness and ability to close the deal are outstanding!</p>
-          </div>
-        </blockquote>
+          </blockquote>
+        @endforeach
       </div>
     </div>
   </section>

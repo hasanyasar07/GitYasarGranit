@@ -52,4 +52,8 @@ Route::controller(AdminController::class)->group(function(){
     Route::post('admin/collection/create','collectionCreate')->name('collectionCreate');
     Route::get('admin/collection/delete/{id}','collectionDelete')->name('collectionDelete');
 
+    Route::get('admin/referance','referanceGet')->name('referanceGet');
+    Route::post('admin/referance/create','referanceCreate')->name('referanceCreate');
+    Route::get('admin/referance/delete/{id}','referanceDelete')->name('referanceDelete');
+
 });

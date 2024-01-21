@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Countertop;
 use App\Models\Slide;
 use App\Models\Collection;
+use App\Models\Referance;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -288,7 +289,24 @@ public function collectionDelete($id){
     return redirect()->back();
 }
 
+public function referanceGet(){
+    $referances=Referance::get();
+    return view('admin.referance',compact('referances'));
+}
 
+public function referanceCreate(Request $request){
+    $referance=new Referance();
+    $referance->company=$request->company;
+    $referance->name=$request->name;
+    $referance->save();
+    return redirect()->back();
 
+}
+
+public function referanceDelete($id){
+    $referance=Referance::findOrfail($id);
+    $referance->delete();
+    return redirect()->back();
+}
 
 }

@@ -93,7 +93,7 @@
 											<a href="{{route('collectionGet')}}">Koleksiyonlar</a>
 										</li>
                                         <li>
-											<a href="social.html">Referanslar</a>
+											<a href="{{route('referanceGet')}}">Referanslar</a>
 										</li>
 									</ul>
 								</div>
