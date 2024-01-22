@@ -5,6 +5,10 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\AdminController;
 
 
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('login', [SiteController::class, 'showLoginForm'])->name('login');
+
 
 Route::get('/',[SiteController::class,'home'])->name('home');
 Route::get('category/{id}',[SiteController::class,'category'])->name('category');
@@ -12,8 +16,8 @@ Route::get('contact',[SiteController::class,'contact'])->name('contact');
 Route::get('about',[SiteController::class,'about'])->name('about');
 Route::get('countertop/{id}',[SiteController::class,'countertop'])->name('countertop');
 
-Route::get('login', [SiteController::class, 'showLoginForm'])->name('admin.login');
-Route::post('login', [SiteController::class, 'login'])->name('admin.login.submit');
+//Route::get('login', [SiteController::class, 'showLoginForm'])->name('admin.login');
+//Route::post('login', [SiteController::class, 'login'])->name('admin.login.submit');
 
 
 
@@ -53,3 +57,7 @@ Route::controller(AdminController::class)->group(function(){
     Route::post('admin/about/update','aboutUpdate')->name('aboutUpdate');
 
 });
+
+
+
+

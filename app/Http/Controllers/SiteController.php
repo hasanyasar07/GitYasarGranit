@@ -11,6 +11,7 @@ use App\Models\Countertop;
 use App\Models\Collection;
 use App\Models\Referance;
 
+
 class SiteController extends Controller
 {
     public function home(){
