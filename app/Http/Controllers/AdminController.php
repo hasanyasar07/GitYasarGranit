@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller
 {
-    public function dashboard(){
-        return view('admin.welcome');
+    public function dashboardGet(){
+        return view('admin.dashboard');
     }
 // ***************   Category Field ********************
 
