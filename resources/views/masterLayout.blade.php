@@ -24,7 +24,7 @@
   <body>
     <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <div class="preloader">
-      <div class="preloader-logo"><img src="{{ asset('images/yasarLogo.png') }}" alt="" width="302" height="88" srcset="images/logo-default-151x44.png 2x"/>
+      <div class="preloader-logo text-center"><img src="{{ asset('images/yasarLogo.png') }}" alt="" width="302" height="88" srcset="images/logo-default-151x44.png 2x"/>
     @php
 
         $categoryPreloder=Category::get();
@@ -34,7 +34,9 @@
       <div class="text-center">
         <h4>
             @foreach($list as $categoryName)
+               <span class="text-uppercase">
                 {{ $categoryName }}
+               </span>
             @endforeach
         </h4>
     </div>

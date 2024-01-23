@@ -28,7 +28,7 @@
         </div>
         <div class="layout-bordered-item wow-outer">
           <div class="layout-bordered-item-inner wow slideInUp">
-            <div class="icon novi-icon icon-lg mdi mdi-email text-primary"></div><a class="link-default" href="mailto:#">yasar07600@hotmail.com</a>
+            <div class="icon novi-icon icon-lg mdi mdi-email text-primary"></div><a class="link-default" href="mailto:#">yasar07600@gmail.com</a>
           </div>
         </div>
         <div class="layout-bordered-item wow-outer">
