@@ -124,7 +124,7 @@
                     <li><a class="icon novi-icon icon-sm link-default mdi mdi-linkedin" href="#"></a></li>
                   </ul>
                 <!-- Rights-->
-              <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span>. All Rights Reserved. Web Development by <a href="mailto:hasanyasar07@hotmail.com">hasanyasar07@hotmail.com</a></p>
+              <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span>. All Rights Reserved.</p>
             </div>
           </div>
         </div>

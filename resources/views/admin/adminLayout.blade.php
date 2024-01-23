@@ -40,6 +40,14 @@
 		************ -->
 
 
+         <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    <!-- Scripts -->
+
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 	</head>
 
@@ -146,32 +154,51 @@
 					<!-- Breadcrumb end -->
 
 					<!-- Header actions ccontainer start -->
-					<div class="header-actions-container">
+					 <div class="header-actions-container">
 
 
 						<!-- Header actions start -->
-						<ul class="header-actions">
 
-							<li class="dropdown">
-								<a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
-									<span class="user-name d-none d-md-block">Mehmet YAŞAR</span>
-									<span class="avatar">
-										<img src="{{asset('admin/images/user4.png')}}" alt="Admin Templates">
-										<span class="status busy"></span>
-									</span>
-								</a>
-								<div class="dropdown-menu dropdown-menu-end" aria-labelledby="userSettings">
-									<div class="header-profile-actions">
-										<a href="profile.html">Profile</a>
-										<a href="account-settings.html">Settings</a>
-										<a href="login.html">Logout</a>
-									</div>
-								</div>
-							</li>
+                        <ul class="header-actions">
+
+							  <!-- Authentication Links -->
+                              @guest
+                              @if (Route::has('login'))
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                  </li>
+                              @endif
+
+                              @if (Route::has('register'))
+                                  <li class="dropdown">
+                                      <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                  </li>
+                              @endif
+                          @else
+                              <li class="dropdown">
+                                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                      {{ Auth::user()->name }} &nbsp;<img src="{{asset("images/dropdown.png")}}" alt="" width="10px" height="6">
+                                  </a>
+
+                                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                      <a class="dropdown-item" href="{{ route('logout') }}"
+                                         onclick="event.preventDefault();
+                                                       document.getElementById('logout-form').submit();">
+                                          {{ __('Logout') }}
+                                      </a>
+
+                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                          @csrf
+                                      </form>
+                                  </div>
+                              </li>
+                          @endguest
 						</ul>
+
 						<!-- Header actions end -->
 
 					</div>
+
 					<!-- Header actions ccontainer end -->
 
 				</div>

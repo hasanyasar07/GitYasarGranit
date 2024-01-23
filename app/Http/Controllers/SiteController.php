@@ -10,6 +10,8 @@ use App\Models\About;
 use App\Models\Countertop;
 use App\Models\Collection;
 use App\Models\Referance;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 
 class SiteController extends Controller
@@ -21,6 +23,23 @@ class SiteController extends Controller
         $referances=Referance::get();
 
         return view("home",compact('slides','favorites','collections','referances'));
+    }
+
+    public function createUser(Request $data)    {
+
+        $data->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $user=new User();
+        $user->name=$data->name;
+        $user->email=$data->email;
+        $user->password=Hash::make($data->password);
+        $user->save();
+        return view("auth.login");
+
     }
     public function category($id){
         $category=Category::findOrFail($id);
