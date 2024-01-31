@@ -29,7 +29,9 @@ Route::post('createUser',[SiteController::class,'createUser'])->name('createUser
 
 
 Route::controller(AdminController::class)->middleware('auth')->group(function(){
+
     Route::get('admin/dashboard','dashboardGet')->name('dashboardGet');
+
     Route::get('admin/category','categoryGet')->name('categoryGet');
     Route::post('admin/category/create','categoryCreate')->name('categoryCreate');
     Route::post('admin/category/update','categoryUpdate')->name('categoryUpdate');

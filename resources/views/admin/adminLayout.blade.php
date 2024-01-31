@@ -74,7 +74,7 @@
 
 				<!-- Sidebar brand starts -->
 				<div class="sidebar-brand">
-					<a href="index.html" class="logo">
+					<a href="{{route('dashboardGet')}}" class="logo">
 						<img src="{{asset('admin/images/logo.svg')}}" alt="Max Admin Dashboard" />
 					</a>
 				</div>

@@ -95,6 +95,22 @@ public function productCreate(Request $request){
 public function productDelete($id){
 
     $product=Product::findOrFail($id);
+    $countertops=Countertop::where('product_id',$id)->get();
+    if(!$countertops->isEmpty()){
+        foreach ($countertops as $countertop) {
+            $photoPath = public_path('uploads') . '/' . $countertop->photo_path;
+
+            if (File::exists($photoPath)) {
+                File::delete($photoPath);
+                // Silme işlemi başarılı olduysa burada başka bir şey yapabilirsiniz.
+            } else {
+                // Silme işlemi başarısız olduysa burada başka bir şey yapabilirsiniz.
+            }
+
+            $countertop->delete();
+        }
+
+    }
 
     $small_photoPath = public_path('uploads') . '/' . $product->small_photo_path;
 
