@@ -12,11 +12,16 @@ use App\Models\Collection;
 use App\Models\Referance;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use SEOMeta;
 
 
 class SiteController extends Controller
 {
     public function home(){
+
+
+        SEOMeta::setCanonical('https://codecasts.com.br/lesson');
+
         $slides=Slide::get();
         $favorites=Product::where('is_favorite',true)->get();
         $collections=Collection::whereHas('category')->with('category')->get();
