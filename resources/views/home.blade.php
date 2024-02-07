@@ -7,7 +7,7 @@ Ana Sayfa
 <section class="section swiper-container swiper-slider swiper-slider-minimal" data-loop="true" data-slide-effect="fade" data-autoplay="4759" data-simulate-touch="true">
     <div class="swiper-wrapper">
      @foreach ($slides as $slide)
-     <div class="swiper-slide swiper-slide_video" data-slide-bg="{{asset("uploads/$slide->photo_path")}}">
+     <div class="swiper-slide swiper-slide_video" data-slide-bg="{{asset("public/uploads/$slide->photo_path")}}">
         <div class="container">
           <div class="jumbotron-classic-content">
             <h1 class="text-uppercase text-white font-weight-bold wow-outer"><span class="wow slideInDown" data-wow-delay=".2s">{{$slide->header}}</span></h1>
@@ -31,8 +31,8 @@ Ana Sayfa
         <div class="col-md-4 wow-outer">
             <!-- Post Modern-->
             <article class="post-modern wow slideInLeft">
-                <a class="post-modern-media" href="{{asset("uploads/$product->big_photo_path")}}" data-lightgallery="item" data-sub-html="<p>{{$product->name}}</p>">
-                    <img src="{{asset("uploads/$product->small_photo_path")}}" alt="" width="450" height="300"/>
+                <a class="post-modern-media" href="{{asset("public/uploads/$product->big_photo_path")}}" data-lightgallery="item" data-sub-html="<p>{{$product->name}}</p>">
+                    <img src="{{asset("public/uploads/$product->small_photo_path")}}" alt="" width="450" height="300"/>
                 </a>
                 <h5 class="post-modern-title">
                     <a class="post-modern-title" href="{{route('countertop',$product->id)}}">{{$product->name}}</a> | <a class="button-winona" href="{{route('countertop',$product->id)}}">Örnek Tezgahlar</a>
@@ -56,7 +56,7 @@ Ana Sayfa
             <!-- Post Modern-->
             <article class="post-modern wow slideInLeft">
                 <a class="post-modern-media" href="{{route('category',$collection->category_id)}}">
-                    <img src="{{asset("uploads/$collection->photo_path")}}" alt="" width="450" height="300"/>
+                    <img src="{{asset("public/uploads/$collection->photo_path")}}" alt="" width="450" height="300"/>
                 </a>
                 <h4 class="thumbnail-light-title"><a href="{{route('category',$collection->category_id)}}">{{$collection->category->name}} Koleksiyon</a></h4>
             </article>
@@ -79,7 +79,7 @@ Ana Sayfa
         @foreach ($referances as $referance)
         <blockquote class="quote-classic">
             <div class="quote-classic-meta">
-              <div class="quote-classic-avatar"><img src="uploads/tic.png" alt="" />
+              <div class="quote-classic-avatar"><img src={{asset("public/uploads/tic.png")}} alt="" />
               </div>
               <div class="quote-classic-info">
                 <cite class="quote-classic-cite">{{$referance->company}}</cite>

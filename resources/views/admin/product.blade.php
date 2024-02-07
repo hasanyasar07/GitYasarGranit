@@ -90,10 +90,10 @@
                         </div>
                     </td>
                     <td>
-                        <img src="{{asset("uploads/$product->big_photo_path")}}" width="90" height="60">
+                        <img src="{{asset("public/uploads/$product->big_photo_path")}}" width="90" height="60">
                     </td>
                     <td>
-                        <img src="{{asset("uploads/$product->small_photo_path")}}" width="90" height="60">
+                        <img src="{{asset("public/uploads/$product->small_photo_path")}}" width="90" height="60">
                     </td>
                     <td>
                         <a href="{{route('productDelete',$product->id)}}" class="btn btn-danger" >Sil</a>

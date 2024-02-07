@@ -15,7 +15,7 @@
 		<meta property="og:description" content="Marketplace for Bootstrap Admin Dashboards">
 		<meta property="og:type" content="Website">
 		<meta property="og:site_name" content="Bootstrap Gallery">
-		<link rel="shortcut icon" href="admin/images/favicon.svg">
+		<link rel="shortcut icon" href="{{asset('public/admin/images/favicon.svg')}}">
 
 		<!-- Title -->
 		<title>Admin Dashboard</title>
@@ -28,11 +28,11 @@
 
 
 		<!-- Bootstrap font icons css -->
-		<link rel="stylesheet" href="{{asset('admin/fonts/bootstrap/bootstrap-icons.css')}}">
-		<link rel="stylesheet" href="{{asset('admin/css/bootstrap.css')}}">
+		<link rel="stylesheet" href="{{asset('public/admin/fonts/bootstrap/bootstrap-icons.css')}}">
+		<link rel="stylesheet" href="{{asset('public/admin/css/bootstrap.css')}}">
 
 		<!-- Main css -->
-		<link rel="stylesheet" href="{{asset('admin/css/main.min.css')}}">
+		<link rel="stylesheet" href="{{asset('public/admin/css/main.min.css')}}">
 
         @yield("css")
 		<!-- *************
@@ -75,7 +75,7 @@
 				<!-- Sidebar brand starts -->
 				<div class="sidebar-brand">
 					<a href="{{route('dashboardGet')}}" class="logo">
-						<img src="{{asset('admin/images/logo.svg')}}" alt="Max Admin Dashboard" />
+						<img src="{{asset('public/admin/images/logo.svg')}}" alt="Max Admin Dashboard" />
 					</a>
 				</div>
 				<!-- Sidebar brand starts -->
@@ -177,7 +177,7 @@
                           @else
                               <li class="dropdown">
                                   <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                      {{ Auth::user()->name }} &nbsp;<img src="{{asset("images/dropdown.png")}}" alt="" width="10px" height="6">
+                                      {{ Auth::user()->name }} &nbsp;<img src="{{asset("public/images/dropdown.png")}}" alt="" width="10px" height="6">
                                   </a>
 
                                   <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -243,12 +243,12 @@
 		************* -->
 		<!-- Required jQuery first, then Bootstrap Bundle JS -->
         @yield("js")
-		<script src="{{asset('admin/js/jquery.min.js')}}"></script>
-		<script src="{{asset('admin/js/bootstrap.bundle.min.js')}}"></script>
+		<script src="{{asset('public/admin/js/jquery.min.js')}}"></script>
+		<script src="{{asset('public/admin/js/bootstrap.bundle.min.js')}}"></script>
 		<!-- Main Js Required -->
-		<script src="{{asset('admin/js/main.js')}}"></script>
+		<script src="{{asset('public/admin/js/main.js')}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-        <script src="{{ asset('js/script.js') }}"></script>
+        <script src="{{ asset('public/js/script.js') }}"></script>
 
 
 

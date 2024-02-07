@@ -72,7 +72,7 @@ Koleksiyon
                         <div class="name fs-5">{{$collection->category->name}}</div>
                     </td>
                     <td>
-                        <img src="{{asset("uploads/$collection->photo_path")}}" width="90" height="60">
+                        <img src="{{asset("public/uploads/$collection->photo_path")}}" width="90" height="60">
                     </td>
                     <td>
                         <a href="{{route('collectionDelete',$collection->id)}}" class="btn btn-danger" >Sil</a>

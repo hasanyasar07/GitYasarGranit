@@ -12,11 +12,11 @@
     <meta name="viewport" content="width=device-width height=device-height initial-scale=1.0 maximum-scale=1.0 user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <link rel="icon" href="{{asset('images/iconLink.png')}}" type="image/x-icon">
+    <link rel="icon" href="{{asset('public/images/iconLink.png')}}" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800%7CPoppins:300,400,700">
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/fonts.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet"  id="main-styles-link">
+    <link href="{{asset('public/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{asset('public/css/fonts.css') }}" rel="stylesheet">
+    <link href="{{asset('public/css/style.css') }}" rel="stylesheet"  id="main-styles-link">
     @yield('css')
 
 
@@ -25,7 +25,7 @@
   <body>
     <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <div class="preloader">
-      <div class="preloader-logo text-center"><img src="{{ asset('images/yasarLogo.png') }}" alt="" width="302" height="88" srcset="images/logo-default-151x44.png 2x"/>
+      <div class="preloader-logo text-center"><img src="{{ asset('public/images/yasarLogo.png') }}" alt="" width="302" height="88" srcset="images/logo-default-151x44.png 2x"/>
     @php
 
         $categoryPreloder=Category::get();
@@ -60,7 +60,7 @@
                 <div class="rd-navbar-panel">
                   <!-- RD Navbar Toggle-->
                   <button class="rd-navbar-toggle" data-rd-navbar-toggle="#rd-navbar-nav-wrap-1"><span></span></button>
-                  <!-- RD Navbar Brand--><a class="rd-navbar-brand" href="{{route('home')}}"><img class="img-banner" src="{{ asset('images/yasarLogo.png') }}" alt="" width="250" height="60" srcset="images/yasarLogo.png 2x"/></a>
+                  <!-- RD Navbar Brand--><a class="rd-navbar-brand" href="{{route('home')}}"><img class="img-banner" src="{{ asset('public/images/yasarLogo.png') }}" alt="" width="250" height="60" srcset="images/yasarLogo.png 2x"/></a>
                 </div>
                 <div class="rd-navbar-collapse">
                   <button class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle="#rd-navbar-collapse-content-1"><span></span></button>
@@ -137,7 +137,7 @@
     <div class="snackbars" id="form-output-global"></div>
     <!-- Javascript-->
     @yield('js')
-    <script src={{asset("js/core.min.js")}}></script>
-    <script src={{asset("js/script.js")}}></script>
+    <script src={{asset("public/js/core.min.js")}}></script>
+    <script src={{asset("public/js/script.js")}}></script>
   </body>
 </html>

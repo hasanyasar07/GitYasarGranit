@@ -4,7 +4,7 @@
 @endsection
 @section('body')
   <!-- Breadcrumbs -->
-  <section class="section novi-background breadcrumbs-custom bg-image context-dark" style="background-image: url(images/iletisim.jpg);">
+  <section class="section novi-background breadcrumbs-custom bg-image context-dark" style="background-image: url(public/images/iletisim.jpg);">
     <div class="breadcrumbs-custom-inner">
       <div class="container breadcrumbs-custom-container">
         <div class="breadcrumbs-custom-main">

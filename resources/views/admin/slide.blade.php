@@ -64,7 +64,7 @@ Slide
                         <div class="name fs-5">{{$slide->header}}</div>
                     </td>
                     <td>
-                        <img src="{{asset("uploads/$slide->photo_path")}}" width="90" height="60">
+                        <img src="{{asset("public/uploads/$slide->photo_path")}}" width="90" height="60">
                     </td>
                     <td>
                         <a href="{{route('slideDelete',$slide->id)}}" class="btn btn-danger" >Sil</a>

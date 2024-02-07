@@ -26,8 +26,8 @@
         <div class="col-md-4 wow-outer">
             <!-- Post Modern-->
             <article class="post-modern wow slideInLeft">
-                <a class="post-modern-media" href="{{asset("uploads/$product->big_photo_path")}}" data-lightgallery="item" >
-                    <img src="{{asset("uploads/$product->small_photo_path")}}" alt="" width="450" height="300"/>
+                <a class="post-modern-media" href="{{asset("public/uploads/$product->big_photo_path")}}" data-lightgallery="item" >
+                    <img src="{{asset("public/uploads/$product->small_photo_path")}}" alt="" width="450" height="300"/>
                 </a>
             </article>
 
